@@ -206,6 +206,10 @@ body {
         width: 90%; /* Adjust love meter width for mobile screens */
     }
 
+    .love-meter-text {
+        font-size: .8rem; /* Adjust love meter text size */
+    }
+
     .photo-collage img {
         width: 80px; /* Smaller images for mobile */
         height: 80px;
