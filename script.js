@@ -24,7 +24,7 @@ const captions = [
     "I'd choose you over and over again.",
     "Forever grateful for you.",
     "You're my end and my beginning, even when I lose, I'm winning.",
-    "Every little thing you do, I'm so in love with you.",
+    "I adore every little thing that you do.",
     "I can't help falling in love with you.",
     "You're the best thing that ever happened to me.",
     "You're everything I've been looking for and more.",
@@ -75,7 +75,13 @@ function showSlide(index) {
     slides.forEach(slide => (slide.style.display = "none")); // Hide all slides
     slides[index].style.display = "block"; // Show the current slide
     captionText.textContent = captions[index]; // Update the caption
+
+     // Sync the love meter
+ updateLoveMeter(index);
 }
+
+
+
 
 /**
  * Automatically transition between slides
@@ -108,3 +114,31 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeSlideshow();
     initializeMusic();
 });
+
+
+/**
+ * Update the love meter progress in sync with the slideshow
+ * @param {Number} index - The index of the current slide
+ */
+function updateLoveMeter(index) {
+    const loveMeterFill = document.querySelector(".love-meter-fill");
+    const totalSlides = photos.length;
+    const percentage = ((index + 1) / totalSlides) * 100;
+
+    // Update the width of the love meter fill
+    loveMeterFill.style.width = `${percentage}%`;
+}
+
+// Floating heart animation
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('hearts');
+    heart.style.left = `${Math.random() * 100}vw`;
+    heart.style.top = `${Math.random() * 20 + 70}vh`; 
+    heart.style.animationDuration = `${Math.random() * 3 + 7}s`;
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+}
+
+setInterval(createHeart, 500);

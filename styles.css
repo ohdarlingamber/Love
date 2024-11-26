@@ -25,6 +25,8 @@ body {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     max-width: 100%;
     margin-bottom: 300px;
+    z-index: 10;
+    position: relative;
 }
 
 .slideshow-container {
@@ -32,6 +34,7 @@ body {
     margin: auto;
     overflow: hidden;
     position: relative;
+    z-index: 10;
 }
 
 .slide img {
@@ -56,4 +59,79 @@ body {
 /* Hide Navigation Buttons */
 .navigation {
     display: none; /* Hides the navigation buttons */
+}
+
+.love-meter {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    font-family: 'great vibes', cursive;
+    font-size: 1.5rem;
+    color: black;
+    text-shadow: 
+    2px 2px 0px #ff6fbf, /* Bottom-right shadow */
+    -2px -2px 0px #ff6fbf, /* Top-left shadow */
+    -2px 2px 0px #ff6fbf, /* Bottom-left shadow */
+    2px -2px 0px #ff6fbf; /* Top-right shadow */
+    z-index: 999;
+}
+
+.love-meter-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the text vertically and horizontally */
+    z-index: 1000; /* Ensure the text is above the fill */
+    pointer-events: none; /* Prevent the text from interfering with hover/click events */
+    animation: glowing-text 3s infinite;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.6), 0 0 10px rgba(255, 123, 189, 0.8);
+}
+
+.love-meter-fill {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #ff7bbd, #ff6fbf);
+    border-radius: 10px;
+    transition: width 5s ease; /* Smooth transition for synchronization */
+}
+
+@keyframes fill-love-meter {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes floating-hearts {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50vh) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.hearts {
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    background: url('Photos/heart2.png') no-repeat center center / contain;
+    opacity: 0.8;
+    filter: hue-rotate(10deg) saturate(200%); /* Adds a red tint and increases brightness */
+    animation: floating-hearts 20s infinite ease-in-out;
+    pointer-events: none;
+    z-index: 5;
 }
