@@ -6,8 +6,8 @@ const photos = [
     "Photos/6.jpeg", "Photos/7.jpeg", "Photos/8.jpeg", "Photos/9.jpeg", "Photos/10.jpeg",
     "Photos/11.jpeg", "Photos/12.jpeg", "Photos/13.jpeg", "Photos/14.jpeg", "Photos/15.jpeg",
     "Photos/16.jpeg", "Photos/17.jpeg", "Photos/18.JPG", "Photos/19.JPG", "Photos/20.JPG",
-    "Photos/21.JPG", "Photos/22.JPG", "Photos/23.JPG", "Photos/24.jpg", "Photos/25.jpg",
-    "Photos/26.jpg"
+    "Photos/21.JPG", "Photos/22.JPG", "Photos/23.JPG", "Photos/24.JPG", "Photos/25.JPG",
+    "Photos/26.JPG"
 ];
 
 const captions = [
