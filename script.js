@@ -1,6 +1,15 @@
 let currentSlide = 0;
 
-// Captions array for the slideshow
+// Photos and captions arrays
+const photos = [
+    "Photos/5.jpeg",
+    "Photos/6.jpeg", "Photos/7.jpeg", "Photos/8.jpeg", "Photos/9.jpeg", "Photos/10.jpeg",
+    "Photos/11.jpeg", "Photos/12.jpeg", "Photos/13.jpeg", "Photos/14.jpeg", "Photos/15.jpeg",
+    "Photos/16.jpeg", "Photos/17.jpeg", "Photos/18.JPG", "Photos/19.JPG", "Photos/20.JPG",
+    "Photos/21.JPG", "Photos/22.JPG", "Photos/23.JPG", "Photos/24.jpg", "Photos/25.jpg",
+    "Photos/26.jpg"
+];
+
 const captions = [
     "Bradley, you make me so happy.",
     "I'm so grateful to call you mine.",
@@ -15,42 +24,62 @@ const captions = [
     "I'd choose you over and over again.",
     "Forever grateful for you.",
     "You're my end and my beginning, even when I lose, I'm winning.",
-    "Every little thing you do, i'm so in love with you.",
+    "Every little thing you do, I'm so in love with you.",
     "I can't help falling in love with you.",
     "You're the best thing that ever happened to me.",
-    "You're everything i've been looking for and more.",
+    "You're everything I've been looking for and more.",
     "I'm all yours if you're all mine.",
-    "Our love is beautiful.",
     "You are the light that makes my darkness disappear.",
-    "I'll be your hope, i'll be your light, i'll be your love.",
-    "You're my wonderwall.",
-    "Every moment is magical with you 🪄",
     "I don't know what I did to deserve you.",
     "You're my dream come true.",
     "I just wanted to say I love you."
 ];
 
-// Function to validate captions match the number of slides
-function validateCaptions() {
+/**
+ * Initialize the slideshow with ordered photos and captions
+ */
+function initializeSlideshow() {
+    const slideshowContainer = document.querySelector(".slideshow-container");
+
+    // Add slides to the container in order
+    photos.forEach((photo, index) => {
+        const slideElement = document.createElement("div");
+        slideElement.className = "slide fade";
+        slideElement.innerHTML = `<img src="${photo}" alt="Slide">`;
+        slideshowContainer.appendChild(slideElement);
+    });
+
+    validateSlides(); // Ensure photos and captions are aligned
+    showSlide(0); // Show the first slide
+    startAutoSlide(); // Start automatic transitions
+}
+
+/**
+ * Validate that the number of slides matches the number of captions
+ */
+function validateSlides() {
     const slides = document.querySelectorAll(".slide");
     if (slides.length !== captions.length) {
         console.error(`Mismatch: ${slides.length} slides but ${captions.length} captions!`);
     }
 }
 
-// Function to display the current slide and caption
+/**
+ * Display a specific slide and its corresponding caption
+ * @param {Number} index - The index of the slide to display
+ */
 function showSlide(index) {
     const slides = document.querySelectorAll(".slide");
     const captionText = document.getElementById("caption-text");
 
     slides.forEach(slide => (slide.style.display = "none")); // Hide all slides
     slides[index].style.display = "block"; // Show the current slide
-
-    // Update the caption
-    captionText.textContent = captions[index];
+    captionText.textContent = captions[index]; // Update the caption
 }
 
-// Automatic slideshow transitions
+/**
+ * Automatically transition between slides
+ */
 function startAutoSlide() {
     setInterval(() => {
         const slides = document.querySelectorAll(".slide");
@@ -59,21 +88,23 @@ function startAutoSlide() {
     }, 5000); // Change slide every 5 seconds
 }
 
-// Initialize slideshow
-document.addEventListener("DOMContentLoaded", () => {
-    validateCaptions(); // Validate captions match slides
-    showSlide(currentSlide); // Show the first slide
-    startAutoSlide(); // Start automatic transitions
-});
+/**
+ * Initialize autoplay loop music
+ */
+function initializeMusic() {
+    const music = document.getElementById("background-music");
 
-// Auto-play music with a fallback for autoplay restrictions
-const music = document.getElementById("background-music");
-music.play().catch(() => {
-    document.body.addEventListener(
-        "click",
-        () => {
-            music.play();
-        },
-        { once: true }
-    );
+    music.play().catch(() => {
+        document.body.addEventListener(
+            "click",
+            () => music.play().catch(err => console.error("Failed to play music:", err)),
+            { once: true }
+        );
+    });
+}
+
+// Initialize everything on page load
+document.addEventListener("DOMContentLoaded", () => {
+    initializeSlideshow();
+    initializeMusic();
 });

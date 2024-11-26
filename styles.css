@@ -1,33 +1,36 @@
-/* Romantic Background and Body */
 body {
     font-family: 'Roboto', sans-serif;
     text-align: center;
     margin: 0;
     background: linear-gradient(135deg, #2d3e92, #552586, #ff7bbd, #38b6ff); /* Galaxy gradient */
-    color: #ffffff; /* White text for readability */
+    color: #ffffff;
 }
 
-/* Header */
 .header {
     font-family: 'Great Vibes', cursive;
     font-size: 3.5rem;
-    color: #ff7bbd; /* Soft pink for romance */
-    text-shadow: 2px 2px 10px rgba(255, 123, 189, 0.7), 0 0 20px rgba(85, 37, 134, 0.6); /* Soft glow */
+    color: #ff7bbd;
+    text-shadow: 2px 2px 10px rgba(255, 123, 189, 0.7), 0 0 20px rgba(85, 37, 134, 0.6);
     margin: 20px 0;
-    padding: 10px;
 }
 
-/* Slideshow Container */
+.caption-container {
+    margin-top: 20px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4b00fa;
+    padding: 5px;
+    border-radius: 10px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    max-width: 100%;
+    margin-bottom: 300px;
+}
+
 .slideshow-container {
-    max-width: 20%;
+    max-width: 30%;
     margin: auto;
     overflow: hidden;
-    position: relative;
-    padding-bottom: 20px;
-}
-
-.slide {
-    display: none;
     position: relative;
 }
 
@@ -35,25 +38,19 @@ body {
     width: 100%;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 100%; /* Ensures the image does not exceed the container's width */
+    max-height: 500px; /* Sets a maximum height for all images */
+    width: auto; /* Maintains aspect ratio */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Ensures images are treated as block-level elements */
+    margin: auto; /* Centers the image horizontally */
+    object-fit: contain; /* Scales the image to fit within the max dimensions */
 }
 
-/* Captions */
-/* Caption Box */
-
-.caption-container {
-    margin-top: -10px;
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.8rem;
-    color: #5e28c1; /* Soft lavender for sweetness */
-    padding: 15px 20px;
-    border-radius: 20px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Subtle glow */
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-
+.slide {
+    display: none;
+    position: relative;
 }
-
 
 
 /* Hide Navigation Buttons */
