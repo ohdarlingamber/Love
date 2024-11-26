@@ -135,3 +135,44 @@ body {
     pointer-events: none;
     z-index: 5;
 }
+
+#fixed-reveal-message {
+    position: fixed;
+    bottom: 60px; /* Position above the love meter */
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 123, 189, 0.8);
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease-in; /* Smooth fade-in effect */
+}
+
+#fixed-reveal-message.show {
+    display: block;
+    opacity: 1;
+}
+
+@keyframes twinkling {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    width: 5px;
+    height: 5px;
+    animation: twinkling 2s infinite;
+}

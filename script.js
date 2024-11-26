@@ -122,13 +122,19 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 function updateLoveMeter(index) {
     const loveMeterFill = document.querySelector(".love-meter-fill");
+    const loveMeterText = document.querySelector(".love-meter-text"); // Select the love meter text
     const totalSlides = photos.length;
     const percentage = ((index + 1) / totalSlides) * 100;
 
     // Update the width of the love meter fill
     loveMeterFill.style.width = `${percentage}%`;
-}
 
+    // Update the love meter text when the meter is full
+    if (percentage === 100) {
+        loveMeterText.textContent = "I love you, Bradley Michael Duer"; // Change the text
+        
+    }
+}
 // Floating heart animation
 function createHeart() {
     const heart = document.createElement('div');
@@ -142,3 +148,16 @@ function createHeart() {
 }
 
 setInterval(createHeart, 500);
+
+// Stars animation
+function createStar() {
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.left = `${Math.random() * 100}vw`;
+    star.style.top = `${Math.random() * 100}vh`;
+    document.body.appendChild(star);
+
+    setTimeout(() => star.remove(), 5000); // Remove after 5 seconds
+}
+
+setInterval(createStar, 100); // Create a star every 100ms
