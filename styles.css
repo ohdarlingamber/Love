@@ -176,3 +176,68 @@ body {
     height: 5px;
     animation: twinkling 2s infinite;
 }
+
+/* Desktop styles (default) */
+/* Keep your original desktop styles here. */
+
+/* General styles for mobile screens */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px; /* Smaller font size for mobile */
+        padding: 10px; /* Add padding for better spacing */
+    }
+
+    .header {
+        font-size: 2.5rem; /* Reduce header size for smaller screens */
+        text-align: center;
+    }
+
+    .slideshow-container {
+        max-width: 100%; /* Make slideshow full width */
+        margin: 0 auto; /* Center the slideshow */
+    }
+
+    .caption-container {
+        font-size: 1.2rem; /* Reduce caption font size */
+        padding: 10px; /* Add padding for readability */
+    }
+
+    .love-meter {
+        width: 90%; /* Adjust love meter width for mobile screens */
+    }
+
+    .photo-collage img {
+        width: 80px; /* Smaller images for mobile */
+        height: 80px;
+        margin: 5px; /* Add spacing between images */
+    }
+
+    button {
+        font-size: 1rem; /* Adjust button font size for mobile */
+        padding: 10px 15px; /* Add padding for tap-friendly buttons */
+    }
+}
+
+/* Tablet-specific styles */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px; /* Slightly larger font than mobile */
+    }
+
+    .header {
+        font-size: 3rem; /* Slightly smaller header than desktop */
+    }
+
+    .caption-container {
+        font-size: 1.5rem; /* Adjust caption font size */
+    }
+
+    .love-meter {
+        width: 80%; /* Adjust love meter for tablet screens */
+    }
+
+    .photo-collage img {
+        width: 100px; /* Adjust photo size for tablet screens */
+        height: 100px;
+    }
+}
