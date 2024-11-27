@@ -201,16 +201,11 @@ body {
         font-size: 1.2rem; /* Reduce caption font size */
         padding: 8px; /* Add padding for readability */
         word-wrap: break-word; /* Wrap long captions */
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding-bottom: 5px;
-        line-height: 1.2;
     }
 
     .love-meter {
         width: 90%; /* Adjust love meter width for mobile screens */
         bottom: 20px;
-        padding-top: 5px;
     }
 
     .love-meter-text {
