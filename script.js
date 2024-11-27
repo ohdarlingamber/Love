@@ -144,3 +144,12 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll(".slide img");
+
+    slides.forEach((img) => {
+        img.style.width = "100%"; // Make images responsive
+        img.style.height = "auto"; // Maintain aspect ratio
+    });
+});
