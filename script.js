@@ -84,7 +84,7 @@ function updateLoveMeter(index) {
     loveMeterFill.style.width = `${percentage}%`;
 
     if (percentage === 100) {
-        loveMeterText.textContent = "I love you, Bradley Michael Duer 💖";
+        loveMeterText.textContent = "I love you, Bradley Michael Duer";
     } else {
         loveMeterText.textContent = "My love for you";
     }
