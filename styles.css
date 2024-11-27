@@ -92,6 +92,12 @@ body {
     pointer-events: none; /* Prevent the text from interfering with hover/click events */
     animation: glowing-text 3s infinite;
     text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.6), 0 0 10px rgba(255, 123, 189, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
 }
 
 .love-meter-fill {
@@ -108,6 +114,15 @@ body {
     }
     100% {
         width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .love-meter-text {
+        font-size: 1.2rem;
+        line-height: 1.4;
+        padding: 5px;
+        word-wrap: break-word;
     }
 }
 
@@ -155,10 +170,29 @@ body {
     z-index: 1;
 }
 
-/* Desktop styles (default) */
-/* Keep your original desktop styles here. */
 
-/* Default styles (desktop) */
+.falling-heart {
+    position: absolute;
+    top: -50px; /* Start above the viewport */
+    width: 30px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    animation: float-up 8s linear infinite;
+    z-index: 5;
+    opacity: 0.9; /* Slight transparency for a softer effect */
+    filter: brightness(2);
+}
+
+/* Floating Animation */
+@keyframes float-up {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-300px); /* Float upwards */
+        opacity: 0;
+    }
+}
 
 /* Mobile-specific styles */
 @media (max-width: 600px) {

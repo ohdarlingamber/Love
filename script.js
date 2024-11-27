@@ -153,3 +153,35 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeMusic(); // Add music initialization
     initializeAnimations(); // Start animations
 });
+
+function createFallingHearts() {
+    const maxHearts = 10; // Limit the number of hearts on the screen
+    const existingHearts = document.querySelectorAll(".falling-heart").length;
+
+    if (existingHearts >= maxHearts) return; // Stop if too many hearts already
+
+    const numHearts = 3; // Number of hearts to generate at a time
+    const loveMeter = document.getElementById("love-meter");
+    const loveMeterRect = loveMeter.getBoundingClientRect();
+
+    for (let i = 0; i < numHearts; i++) {
+        const heart = document.createElement("img");
+        heart.className = "falling-heart";
+        heart.src = "Photos/heart2.png"; // Your custom heart image
+
+        // Start from the top of the love meter
+        heart.style.left = `${loveMeterRect.left + Math.random() * loveMeterRect.width}px`; // Random horizontal position within the love meter
+        heart.style.top = `${loveMeterRect.top}px`; // Top of the love meter
+     
+
+
+        document.body.appendChild(heart);
+
+        // Remove the heart after the animation completes
+        setTimeout(() => heart.remove(), 8000); // Match the animation duration
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    setInterval(createFallingHearts, 3000); // Generate hearts every 3 seconds
+});
