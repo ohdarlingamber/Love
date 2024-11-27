@@ -161,3 +161,4 @@ function createStar() {
 }
 
 setInterval(createStar, 100); // Create a star every 100ms
+

@@ -199,11 +199,18 @@ body {
 
     .caption-container {
         font-size: 1.2rem; /* Reduce caption font size */
-        padding: 10px; /* Add padding for readability */
+        padding: 8px; /* Add padding for readability */
+        word-wrap: break-word; /* Wrap long captions */
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        line-height: 1.2;
     }
 
     .love-meter {
         width: 90%; /* Adjust love meter width for mobile screens */
+        bottom: 20px;
+        padding-top: 5px;
     }
 
     .love-meter-text {
@@ -234,10 +241,12 @@ body {
 
     .caption-container {
         font-size: 1.5rem; /* Adjust caption font size */
+        margin-bottom: 5px; /* Change if needed */
     }
 
     .love-meter {
         width: 80%; /* Adjust love meter for tablet screens */
+        margin-top: 5px; /* Change if needed */
     }
 
     .photo-collage img {
