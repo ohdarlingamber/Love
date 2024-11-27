@@ -45,7 +45,7 @@ function initializeSlideshow() {
     photos.forEach((photo, index) => {
         const slideElement = document.createElement("div");
         slideElement.className = "slide fade";
-        slideElement.innerHTML = `<img src="${photo}" alt="Slide">`;
+        slideElement.innerHTML = `<img src="${photo}" alt="Slide ${index + 1}">`;
         slideshowContainer.appendChild(slideElement);
     });
 
@@ -58,9 +58,8 @@ function initializeSlideshow() {
  * Validate that the number of slides matches the number of captions
  */
 function validateSlides() {
-    const slides = document.querySelectorAll(".slide");
-    if (slides.length !== captions.length) {
-        console.error(`Mismatch: ${slides.length} slides but ${captions.length} captions!`);
+    if (photos.length !== captions.length) {
+        console.error(`Mismatch: ${photos.length} photos but ${captions.length} captions!`);
     }
 }
 
@@ -73,74 +72,49 @@ function showSlide(index) {
     const captionText = document.getElementById("caption-text");
 
     slides.forEach(slide => (slide.style.display = "none")); // Hide all slides
-    slides[index].style.display = "block"; // Show the current slide
-    captionText.textContent = captions[index]; // Update the caption
+    if (slides[index]) slides[index].style.display = "block"; // Show current slide
+    if (captions[index]) captionText.textContent = captions[index]; // Update caption
 
-     // Sync the love meter
- updateLoveMeter(index);
+    updateLoveMeter(index); // Sync love meter progress
 }
-
-
-
 
 /**
  * Automatically transition between slides
  */
 function startAutoSlide() {
     setInterval(() => {
-        const slides = document.querySelectorAll(".slide");
-        currentSlide = (currentSlide + 1) % slides.length; // Move to the next slide
-        showSlide(currentSlide);
+        currentSlide = (currentSlide + 1) % photos.length; // Cycle through slides
+        showSlide(currentSlide); // Sync photos, captions, and love meter
     }, 5000); // Change slide every 5 seconds
 }
 
 /**
- * Initialize autoplay loop music
- */
-function initializeMusic() {
-    const music = document.getElementById("background-music");
-
-    music.play().catch(() => {
-        document.body.addEventListener(
-            "click",
-            () => music.play().catch(err => console.error("Failed to play music:", err)),
-            { once: true }
-        );
-    });
-}
-
-// Initialize everything on page load
-document.addEventListener("DOMContentLoaded", () => {
-    initializeSlideshow();
-    initializeMusic();
-});
-
-
-/**
- * Update the love meter progress in sync with the slideshow
+ * Update the love meter progress
  * @param {Number} index - The index of the current slide
  */
 function updateLoveMeter(index) {
     const loveMeterFill = document.querySelector(".love-meter-fill");
-    const loveMeterText = document.querySelector(".love-meter-text"); // Select the love meter text
-    const totalSlides = photos.length;
-    const percentage = ((index + 1) / totalSlides) * 100;
+    const loveMeterText = document.querySelector(".love-meter-text");
+    const percentage = ((index + 1) / photos.length) * 100;
 
     // Update the width of the love meter fill
     loveMeterFill.style.width = `${percentage}%`;
 
-    // Update the love meter text when the meter is full
+    // Always display "My love for you" except when 100%
     if (percentage === 100) {
-        loveMeterText.textContent = "I love you, Bradley Michael Duer"; // Change the text
-        
+        loveMeterText.textContent = "I love you, Bradley Michael Duer 💖";
+        document.getElementById("fixed-reveal-message").classList.add("show");
+    } else {
+        loveMeterText.textContent = "My love for you"; // Constant text
     }
 }
+
 // Floating heart animation
 function createHeart() {
     const heart = document.createElement('div');
     heart.classList.add('hearts');
     heart.style.left = `${Math.random() * 100}vw`;
-    heart.style.top = `${Math.random() * 20 + 70}vh`; 
+    heart.style.top = `${Math.random() * 20 + 70}vh`;
     heart.style.animationDuration = `${Math.random() * 3 + 7}s`;
     document.body.appendChild(heart);
 
@@ -149,16 +123,24 @@ function createHeart() {
 
 setInterval(createHeart, 500);
 
-// Stars animation
-function createStar() {
-    const star = document.createElement("div");
-    star.classList.add("star");
-    star.style.left = `${Math.random() * 100}vw`;
-    star.style.top = `${Math.random() * 100}vh`;
-    document.body.appendChild(star);
+// Initialize everything on page load
+document.addEventListener("DOMContentLoaded", () => {
+    initializeSlideshow();
+    initializeMusic();
+});
 
-    setTimeout(() => star.remove(), 5000); // Remove after 5 seconds
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const music = document.getElementById("background-music");
 
-setInterval(createStar, 100); // Create a star every 100ms
+    // Try playing the music automatically
+    music.play().catch(() => {
+        console.log("Autoplay blocked. Waiting for user interaction.");
 
+        // Start playing after user interaction
+        document.body.addEventListener(
+            "click",
+            () => music.play().catch(err => console.error("Failed to play music:", err)),
+            { once: true } // Trigger only once
+        );
+    });
+});
