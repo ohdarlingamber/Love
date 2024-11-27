@@ -13,9 +13,12 @@ body {
 /* Header */
 .header {
     text-align: center;
-    font-size: 3rem;
+    font-size: 4rem;
     font-family: 'Great Vibes', cursive;
+    font-weight: bold;
     margin: 20px;
+    color: #38b6ff;
+    text-shadow: 0 0 10px #ff007f, 0 0 20px #38b6ff; /* Add a neon glow effect */
 }
 
 /* Slideshow Styles */
@@ -41,8 +44,10 @@ body {
 .caption-container {
     text-align: center;
     margin-top: 10px;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-family: 'Great Vibes', cursive;
+    color: #620a85;
+    text-shadow: 0 0 10px #9b59b6, 0 0 20px #9b59b6;
 }
 
 /* Love Meter Styles */
