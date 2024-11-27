@@ -111,30 +111,7 @@ body {
     }
 }
 
-@keyframes floating-hearts {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-50vh) scale(0.5);
-        opacity: 0;
-    }
-}
 
-.hearts {
-    position: fixed;
-    top: 80%;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    background: url('Photos/heart2.png') no-repeat center center / contain;
-    opacity: 0.8;
-    filter: hue-rotate(10deg) saturate(200%); /* Adds a red tint and increases brightness */
-    animation: floating-hearts 20s infinite ease-in-out;
-    pointer-events: none;
-    z-index: 5;
-}
 
 #fixed-reveal-message {
     position: fixed;
@@ -174,7 +151,8 @@ body {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     width: 5px;
     height: 5px;
-    animation: twinkling 2s infinite;
+    animation: twinkling 3s infinite ease-in-out;
+    z-index: 1;
 }
 
 /* Desktop styles (default) */
